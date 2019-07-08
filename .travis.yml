@@ -8,11 +8,11 @@ before_install:
   - pyenv local 3.7.1
 install:
   - pip install --upgrade pip
-  - pip install codecov  
+  - pip install codecov
 script:
   - cd utilities
   - python install.py branch development
   - cd ..
-  - pytest --cov=nwb_explorer
+  - python -m pytest --cov=nwb_explorer
 after_success:
   - codecov
