@@ -11,4 +11,6 @@ script:
   - pip install --upgrade pip
   - echo $(which python)
   - which python
-  - pip install branch $TRAVIS_BRANCH
+  - echo ${TRAVIS_BRANCH}
+  - echo ${TRAVIS_PULL_REQUEST_BRANCH}
+  - python install.py branch ${TRAVIS_BRANCH}
