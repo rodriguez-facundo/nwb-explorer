@@ -18,7 +18,16 @@ Below you will find the software you need to install to use nwb explorer (and th
 * Python 3 (3.6+), pip (10.0.1)
 
 
+
 #### Python Dependencies
+=======
+* Django (1.11.7). `pip install django`
+* Pygeppeto_server. ```git clone https://github.com/MetaCell/pygeppetto-django.git && cd pygeppetto-django && git checkout development && pip install -e . ```
+* Pygeppeto_model.```git clone https://github.com/openworm/pygeppetto.git && cd pygeppetto && git checkout manager && pip install -e . ```
+* Pyecore (0.8.1). `pip install pyecore`
+* Pynwb. ```git clone https://github.com/NeurodataWithoutBorders/pynwb.git && cd pynwb && git checkout dev && pip install -e . ```
+* Seaborn (0.8.1). `pip install seaborn`
+ 
 
 We recommend the use of a new python 3 virtual environment: 
 
@@ -114,6 +123,7 @@ This work is currently funded by the Wellcome Trust.
 
 * Matteo Cantarelli ([MetaCell](http://metacell.us))
 * Giovanni Idili ([MetaCell](http://metacell.us))
+* Afonso Pinto 
 
 See also the list of [contributors](https://github.com/Metacell/nwb-explorer/contributors) who participated in this project.
 
