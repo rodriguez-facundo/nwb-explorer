@@ -11,7 +11,8 @@ install:
   - pip install codecov
 script:
   - cd utilities
-  - python install.py branch development
+  - echo ${TRAVIS_BRANCH}
+  - python install.py branch ${TRAVIS_BRANCH}
   - cd ..
   - python -m pytest --cov=nwb_explorer
 after_success:
