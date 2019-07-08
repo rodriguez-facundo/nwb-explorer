@@ -1,4 +1,4 @@
-# NWB Explorer
+#  NWB Explorer
 
 NWB Explorer is a web application that can be used by scientists to read, visualize and explore
 the content of NWB files. 
