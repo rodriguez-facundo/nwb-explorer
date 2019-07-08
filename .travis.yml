@@ -12,5 +12,7 @@ install:
 script:
   - cd utilities
   - python install.py branch development
+  - cd ..
+  - pytest --cov=nwb_explorer
 after_success:
   - codecov
