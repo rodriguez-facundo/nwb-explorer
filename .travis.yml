@@ -6,8 +6,11 @@ cache:
   - npm
 before_install:
   - pyenv local 3.7.1
-before_script:
+install:
   - pip install --upgrade pip
+  - pip install codecov  
 script:
   - cd utilities
-  - python install.py branch nwbdev
+  - python install.py branch development
+after_success:
+  - codecov
