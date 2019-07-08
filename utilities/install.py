@@ -157,7 +157,7 @@ def main(branch=branch, npmSkip=False, skipTest=False):
 
     # test
     if skipTest:
-        cprint("Skipping tests")
+        cprint("Skipping  tests")
     else:
         cprint("Testing NWB-Explorer")
         execute(cmd=['python', '-m', 'pytest', 
