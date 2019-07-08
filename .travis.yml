@@ -10,4 +10,4 @@ before_script:
   - pip install --upgrade pip
 script:
   - cd utilities
-  - python install.py branch ${TRAVIS_BRANCH}
+  - python install.py branch pynwb
