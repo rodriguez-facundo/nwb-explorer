@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.com/rodriguez-facundo/nwb-explorer.svg?branch=test)](https://travis-ci.com/rodriguez-facundo/nwb-explorer)
-[![codecov](https://codecov.io/gh/rodriguez-facundo/nwb-explorer/branch/test/graph/badge.svg)](https://codecov.io/gh/rodriguez-facundo/nwb-explorer)
+[![Build Status](https://travis-ci.com/rodriguez-facundo/nwb-explorer.svg?branch=test-branch-001)](https://travis-ci.com/rodriguez-facundo/nwb-explorer)
+[![codecov](https://codecov.io/gh/rodriguez-facundo/nwb-explorer/branch/test-branch-001/graph/badge.svg)](https://codecov.io/gh/rodriguez-facundo/nwb-explorer)
 
 #  NWB Explorer
 

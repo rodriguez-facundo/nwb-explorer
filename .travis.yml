@@ -14,6 +14,8 @@ script:
   - echo ${TRAVIS_BRANCH}
   - python install.py branch ${TRAVIS_BRANCH}
   - cd ..
-  - python -m pytest --cov=nwb_explorer
+  # - python -m pytest --cov=nwb_explorer
+  - coverage run --source pygeppetto -m pytest -v 
+  - coverage report -m
 after_success:
   - codecov
