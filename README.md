@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/rodriguez-facundo/nwb-explorer.svg?branch=test-branch-001)](https://travis-ci.com/rodriguez-facundo/nwb-explorer)
 [![codecov](https://codecov.io/gh/rodriguez-facundo/nwb-explorer/branch/test-branch-001/graph/badge.svg)](https://codecov.io/gh/rodriguez-facundo/nwb-explorer)
 [![Twitter Follow](https://img.shields.io/twitter/follow/metacell.svg?label=follow&style=social)]((https://twitter.com/metacell))
-[![Twitter Follow](https://img.shields.io/twitter/follow/ApacheAirflow.svg?style=social&label=Follow)](https://twitter.com/ApacheAirflow)
+
 #  NWB Explorer
 
  NWB Explorer is a web application that can be used by scientists to read, visualize and explore
