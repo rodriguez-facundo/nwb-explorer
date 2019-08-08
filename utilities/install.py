@@ -6,9 +6,8 @@ from welcome import donkey
 branch = None
 
 # repos
-PYECORE = 'https://github.com/rodriguez-facundo/pyecore'
 NWBEXP = 'https://github.com/metacell/geppetto-nwbexplorer'
-PYNWB = 'https://github.com/NeurodataWithoutBorders/pynwb.git'
+# PYNWB = 'https://github.com/NeurodataWithoutBorders/pynwb.git'
 JUPYTER = 'https://github.com/openworm/org.geppetto.frontend.jupyter.git'
 PYGEPPETTO = 'https://github.com/openworm/pygeppetto.git'
 NWBWIDGETS = 'https://github.com/NeurodataWithoutBorders/nwb-jupyter-widgets.git'
@@ -77,15 +76,7 @@ def main(branch=branch, npmSkip=False, skipTest=False):
     if not skipTest:
         cprint("Installing pytest")
         if subprocess.call(['pip', 'show', 'pytest']):
-            subprocess.call(['pip', 'install', 'pytest==4.6.2'])
-
-    # install pyecore
-    cprint("Installing pyecore")
-    clone(repository=PYECORE,
-          folder='pyecore',
-          default_branch='dev'
-          )
-    execute(cmd=['pip', 'install', '-e', '.'], cwd='pyecore')
+            subprocess.call(['pip', 'install', 'pytest==4.6.2', 'pytest-cov==2.7.1', 'tox==3.12.1'])
 
     # install pygeppetto
     cprint("Installing pygeppetto")
@@ -101,16 +92,17 @@ def main(branch=branch, npmSkip=False, skipTest=False):
         cprint("Skipping pygeppetto tests")
     else:
         cprint("Testing pygeppetto")
-        execute(cmd=['python', '-m', 'pytest'], cwd=os.path.join(DEPS_DIR, 'pygeppetto'))
+        execute(cmd=['coverage', 'run', '--source', 'pygeppetto', '-m', 'pytest', '-v', '-c', 'tox.ini'], cwd=os.path.join(DEPS_DIR, 'pygeppetto'))
 
 
-    # install pynwb
-    cprint("Installing pynwb")
-    clone(repository=PYNWB,
-        folder='pynwb',
-        default_branch='dev'
-    )
-    execute(cmd=['pip', 'install', '-e', '.'], cwd='pynwb')
+
+    # # install pynwb
+    # cprint("Installing pynwb")
+    # clone(repository=PYNWB,
+    #     folder='pynwb',
+    #     default_branch='dev'
+    # )
+    # execute(cmd=['pip', 'install', '-e', '.'], cwd='pynwb')
 
 
     # install pynwb

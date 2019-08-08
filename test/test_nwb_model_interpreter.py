@@ -92,26 +92,26 @@ def test_importType(nwb_interpreter, nwbfile):
 
     assert len(geppetto_model.variables) == 1
     assert geppetto_model.variables[0].types[0].name == 'nwbfile'
-    assert len(geppetto_model.variables[0].types[0].variables) == 10
-    assert len(geppetto_model.variables[0].types[0].variables[0].types[0].variables) == 3
+    assert len(geppetto_model.variables[0].types[0].variables) == 8
+    assert len(geppetto_model.variables[0].types[0].variables[0].types[0].variables) == 4
 
 
 def test_importValue(nwb_interpreter, nwbfile):
-    nwb_interpreter.createModel(nwbfile, 'typename')
-    value = nwb_interpreter.importValue('typename.acquisition.t1.data')
+    nwb_interpreter.createModel(nwbfile, 'nwbfile')
+    value = nwb_interpreter.importValue('nwbfile.acquisition.t1.data')
     from pygeppetto.model.values import TimeSeries
     assert type(value) == TimeSeries
     assert len(value.value) == 100
     assert value.value[0] == 0.0
 
-    value = nwb_interpreter.importValue('typename.acquisition.t1.time')
+    value = nwb_interpreter.importValue('nwbfile.acquisition.t1.time')
     assert type(value) == TimeSeries
     assert len(value.value) == 100
     assert value.value[0] == 0.0
     assert value.value[1] == 1.0
 
-    assert nwb_interpreter.import_value_from_path('typename.acquisition.t1.data').value[0] == 0.0
-    assert nwb_interpreter.import_value_from_path('typename.acquisition.t1.time').value[0] == 0.0
+    assert nwb_interpreter.importValue('nwbfile.acquisition.t1.data').value[0] == 0.0
+    assert nwb_interpreter.importValue('nwbfile.acquisition.t1.time').value[0] == 0.0
 
 def test_errors(nwb_interpreter, nwbfile, tmpdir):
     nwb_interpreter.createModel(nwbfile, 'typename')
@@ -120,8 +120,20 @@ def test_errors(nwb_interpreter, nwbfile, tmpdir):
     assert isinstance(nwbfile, pynwb.file.NWBFile)
     assert nwb_interpreter.getDependentModels() == []
     assert nwb_interpreter.getName() == 'NWB Model Interpreter'
-    assert nwb_interpreter.nwb_reader.has_all_requirements(['acquisition.TimeSeries', 'TimeSeries', 'ProcessingModule', 'TwoPhotonSeries'])
+    assert nwb_interpreter.nwb_reader.has_all_requirements(['acquisition.TimeSeries', 'acquisition.ImageSeries'])
     
     with pytest.raises(KeyError):
         assert _single_file_test(nwb_interpreter, FILES['a_non_existent_file.pynwb'], tmpdir)
 
+
+def test_imageseries(nwb_interpreter, nwbfile, tmpdir):
+    nwb_interpreter.createModel(nwbfile, 'typename')
+
+    internal_images = [nwb_interpreter.get_image('internal_storaged_image', 'acquisition', i) for i in range(3)]
+    external_images = [nwb_interpreter.get_image('external_storaged_image', 'acquisition', i) for i in range(3)]
+    
+    import imageio
+
+    np_images = [imageio.imread(img) for img in internal_images + external_images]
+    
+    assert all([img.shape == (2, 2, 3) for img in np_images])
