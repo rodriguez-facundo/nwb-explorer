@@ -6,7 +6,7 @@ from welcome import donkey
 branch = None
 
 # repos
-NWBEXP = 'https://github.com/metacell/geppetto-nwbexplorer'
+NWBEXP = 'https://github.com/rodriguez-facundo/geppetto-nwbexplorer'
 # PYNWB = 'https://github.com/NeurodataWithoutBorders/pynwb.git'
 JUPYTER = 'https://github.com/openworm/org.geppetto.frontend.jupyter.git'
 PYGEPPETTO = 'https://github.com/openworm/pygeppetto.git'
