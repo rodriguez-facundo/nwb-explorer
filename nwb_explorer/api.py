@@ -130,3 +130,6 @@ class NWBController:  # pytest: no cover
                                     mathjax_config=self.mathjax_config,
                                     get_custom_frontend_exporters=get_custom_frontend_exporters
                                     )
+    @get('/api/clearcookie')
+    def clear_cookie(self):
+        return {'token': os.getenv('JUPYTERHUB_API_TOKEN', 'empty')}
